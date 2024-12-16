@@ -210,8 +210,7 @@ def getSymptomsList():
 for line in sys.stdin:
 	try:
 		user_input = line.strip()
-		if(user_input == "dengey"):
-			break
+
 		if(user_input == "get"):
 			getSymptomsList()
 			continue
