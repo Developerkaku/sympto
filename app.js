@@ -101,76 +101,34 @@ function runPredictInPython(inputData) {
     });
 }
 
-// function installLibraries() {
-//     return new Promise((resolve, reject) => {
-//         console.log("Setting up a Python virtual environment...");
-
-//         // Step 1: Create a virtual environment
-//         exec('python3 -m venv venv', (venvErr) => {
-//             if (venvErr) {
-//                 console.error(`Error creating virtual environment: ${venvErr.message}`);
-//                 return resolve(false);
-//             }
-
-//             console.log("Virtual environment created successfully.");
-
-//             // Step 2: Install dependencies within the virtual environment
-//             const pipCommand = process.platform === "win32"
-//                 ? 'venv\\Scripts\\pip install --use-pep517 -r requirements.txt'
-//                 : 'venv/bin/pip install --use-pep517 -r requirements.txt';
-//             // const pipCommand = process.platform === "win32" ? 'venv\\Scripts\\pip install -r requirements.txt' : 'venv/bin/pip install -r requirements.txt';
-//             exec(pipCommand, (pipErr, stdout, stderr) => {
-//                 if (pipErr) {
-//                     console.error(`Error installing requirements: ${pipErr.message}`);
-//                     resolve(false);
-//                 } else if (stderr) {
-//                     console.error(`Stderr during pip install: ${stderr}`);
-//                     resolve(false);
-//                 } else {
-//                     console.log("Requirements installed successfully.");
-//                     console.log(stdout);
-//                     resolve(true);
-//                 }
-//             });
-//         });
-//     });
-// }
-
 let pythonProcess;
 let symptomsList;
 let modelsTrained;
 
 async function startPythonScript() {
-    // Installing required libraries for Python
-    // let install = await installLibraries();
-
     // Running the script
-    // if (install !== false) {
-        console.log("Running the Python script...");
-        const pythonCommand = process.platform === "win32" ? 'venv\\Scripts\\python' : 'venv/bin/python';
-        pythonProcess = spawn(pythonCommand, ['predict.py']);
+    console.log("Running the Python script...");
+    const pythonCommand = process.platform === "win32" ? 'venv\\Scripts\\python' : 'venv/bin/python';
+    pythonProcess = spawn(pythonCommand, ['predict.py']);
 
-        pythonProcess.stdout.on('data', (data) => {
-            console.log(`Python stdout: ${data}`);
-            try {
-                const response = JSON.parse(data.toString());
-                if (response.models_trained !== undefined) modelsTrained = response.models_trained;
-                console.log(modelsTrained);
-            } catch (err) {
-                console.error(`Error parsing Python stdout: ${err}`);
-            }
-        });
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(`Python stdout: ${data}`);
+        try {
+            const response = JSON.parse(data.toString());
+            if (response.models_trained !== undefined) modelsTrained = response.models_trained;
+            console.log(modelsTrained);
+        } catch (err) {
+            console.error(`Error parsing Python stdout: ${err}`);
+        }
+    });
 
-        pythonProcess.stderr.on("data", (data) => {
-            console.error(`Python stderr: ${data}`);
-        });
+    pythonProcess.stderr.on("data", (data) => {
+        console.error(`Python stderr: ${data}`);
+    });
 
-        pythonProcess.on("close", (code) => {
-            console.log(`Python script exited with code ${code}`);
-        });
-    // } else {
-    //     console.log("Exiting the Node.js script due to setup issues.");
-    // }
+    pythonProcess.on("close", (code) => {
+        console.log(`Python script exited with code ${code}`);
+    });
 }
 
 // Start the script as soon as the server powers up
