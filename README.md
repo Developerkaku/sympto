@@ -19,20 +19,20 @@ A disease prediction application that leverages machine learning to diagnose ill
 
 ## Installation
 
-### 1. Clone the repository
+#### 1. Clone the repository
 ```
 git clone https://github.com/Developerkaku/Sympto.git
 ```
-### 2. Navigate to the project folder
+#### 2. Navigate to the project folder
 ```
 cd Sympto
 ```
-### 3. Install the required packages
+#### 3. Install the required packages
 ```
 pip install -r requirements.txt
 npm install
 ```
-### 4. Run the server
+#### 4. Run the server
 ```
 node app.js
 ```
