@@ -3,6 +3,17 @@
 ## Overview
 A disease prediction application that leverages machine learning to diagnose illnesses based on user-input symptoms. Integrates a Python backend with a JavaScript frontend for seamless interaction.
 
+## 👥 Collaborators
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/Lowhithya"><img src="https://avatars.githubusercontent.com/Lowhithya" width="80px;" alt=""/><br /><sub><b>Lowhithya</b></sub></a></td>
+    <td align="center"><a href="https://github.com/ShivaAroor1405"><img src="https://avatars.githubusercontent.com/ShivaAroor1405" width="80px;" alt=""/><br /><sub><b>ShivaAroor1405</b></sub></a></td>
+    <td align="center"><a href="https://github.com/Sriram-silimoju"><img src="https://avatars.githubusercontent.com/Sriram-silimoju" width="80px;" alt=""/><br /><sub><b>Sriram-silimoju</b></sub></a></td>
+  </tr>
+</table>
+
+
 ## Live Demo
 [Live Sympto](https://developerkaku.github.io/sympto)
 
