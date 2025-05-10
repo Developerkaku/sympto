@@ -36,4 +36,4 @@ npm install
 ```
 node app.js
 ```
-#### 5. Access the application at `https://localhost:5000/`
+#### 5. Access the application at `https://localhost:3000/`
