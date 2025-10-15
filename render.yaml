@@ -1,0 +1,16 @@
+# Exported from Render on 2025-10-15T13:59:47Z
+version: "1"
+services:
+- type: web
+  name: Sympto
+  runtime: node
+  repo: https://github.com/Developerkaku/sympto
+  plan: free
+  envVars:
+  - key: PORT
+    sync: false
+  region: oregon
+  buildCommand: npm install && python3 -m venv venv && source venv/bin/activate &&
+    pip install -r requirements.txt
+  startCommand: node app.js
+  autoDeployTrigger: commit
